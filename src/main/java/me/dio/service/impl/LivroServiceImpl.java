@@ -17,19 +17,20 @@ public class LivroServiceImpl implements LivroService {
 
     @Override
     public Livro create(Livro livroToCreate) {
-        if(livroRepository.livroExists(livroToCreate.getTitulo())){
+        /*if(!livroRepository.findById(livroToCreate.getId())){
             throw new IllegalArgumentException("This book already exists.");
-        }
+        }*/
         return livroRepository.save(livroToCreate);
     }
 
     @Override
     public List<Livro> findAll() {
         List<Livro> listLivros = livroRepository.findAll();
-        if(listLivros.isEmpty()){
-            throw new IllegalArgumentException("No books added yet.");
+        if(!listLivros.isEmpty()){
+            return listLivros;
+            //throw new RuntimeException("No books added yet.");
         }
-        return listLivros;
+        return null;
     }
 
     @Override

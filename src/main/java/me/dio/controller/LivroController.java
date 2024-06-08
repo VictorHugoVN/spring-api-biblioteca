@@ -2,6 +2,7 @@ package me.dio.controller;
 
 import me.dio.domain.model.Livro;
 import me.dio.service.LivroService;
+import me.dio.service.impl.LivroServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,10 @@ import java.util.List;
 public class LivroController {
 
     @Autowired
-    LivroService livroService;
+    LivroServiceImpl livroService;
 
     @PostMapping
-    public ResponseEntity<Livro> create(@PathVariable Livro livroToCreate){
+    public ResponseEntity<Livro> create(@RequestBody Livro livroToCreate){
         var livroCreated = livroService.create(livroToCreate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -33,8 +34,9 @@ public class LivroController {
     }
 
     @GetMapping("/{id}")
-    public Livro findById(@RequestBody Long id){
-        return livroService.findById(id);
+    public ResponseEntity<Livro> findById(@PathVariable Long id){
+        var livro = livroService.findById(id);
+        return ResponseEntity.ok(livro);
     }
 
     @DeleteMapping
