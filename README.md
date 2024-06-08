@@ -1,4 +1,4 @@
-Tecnologias utilizadas:\n
+Tecnologias utilizadas:
   .Java 21
   .Spring Boot 3
   .Spring Data JPA
