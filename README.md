@@ -4,3 +4,7 @@ Tecnologias utilizadas:
   .Spring Data JPA  
   .Banco de Dados H2  
   .Gradle
+
+
+Descrição: API simples para cadastro, exclusão e recuperação de livros (título e autor).
+  
